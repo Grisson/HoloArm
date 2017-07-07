@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloArm", "HoloArm.csproj", "{8C5F9713-2A81-DCD2-5FB5-88D6D65248BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloArm.Editor", "HoloArm.Editor.csproj", "{AEA447D7-8805-3845-C2D1-C532861478D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C5F9713-2A81-DCD2-5FB5-88D6D65248BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C5F9713-2A81-DCD2-5FB5-88D6D65248BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C5F9713-2A81-DCD2-5FB5-88D6D65248BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C5F9713-2A81-DCD2-5FB5-88D6D65248BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEA447D7-8805-3845-C2D1-C532861478D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEA447D7-8805-3845-C2D1-C532861478D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEA447D7-8805-3845-C2D1-C532861478D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEA447D7-8805-3845-C2D1-C532861478D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
