@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{878f5fa9-0e4f-44a8-921e-f54a95836071}</ProjectGuid>
+    <ProjectGuid>{f746da7b-b233-4c07-bfd7-cd17a2b00a0b}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AssemblyCSharpWSA</RootNamespace>
