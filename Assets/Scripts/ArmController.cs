@@ -45,6 +45,7 @@ public class ArmController : MonoBehaviour, IManipulationHandler {
 
     // Use this for initialization
     void Start () {
+        InputManager.Instance.PushModalInputHandler(this.gameObject);
 		
 	}
 	
