@@ -9,7 +9,7 @@ public class ArmController : MonoBehaviour, IManipulationHandler
 
     public string ServiceEndPoint;
 
-    public string ArmId;
+    public int ArmId = 4396;
 
     public Text StatusOutPut;
 
