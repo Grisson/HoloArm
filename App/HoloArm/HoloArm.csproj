@@ -214,12 +214,12 @@
 
   <ItemGroup>
     <ProjectReference Include="D:\_c\HoloArm\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj">
-      <Project>{5b0443e1-2968-43a0-976f-f1716c84a4c2}</Project>
+      <Project>{05a6fb72-ee46-487e-965a-ebb9eb0bcff9}</Project>
       <Name>Assembly-CSharp</Name>
       <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="D:\_c\HoloArm\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj">
-      <Project>{f746da7b-b233-4c07-bfd7-cd17a2b00a0b}</Project>
+      <Project>{0af86e12-304e-4d72-959d-d74d2479fefa}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
       <Private>False</Private>
     </ProjectReference>
