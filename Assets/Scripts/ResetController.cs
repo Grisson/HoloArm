@@ -8,12 +8,14 @@ public class ResetController : MonoBehaviour, IInputClickHandler
 {
     public string ServiceEndPoint = "10.125.169.141:8182";
 
-    public int ArmId = 4396;
+    public int RightArmId = 4396;
+    public int LeftArmId = 43967;
 
     public void OnInputClicked(InputClickedEventData eventData)
     {
         Debug.LogFormat("Reset arm position");
-        StartCoroutine(PushResetCommand());
+        StartCoroutine(PushResetCommand(LeftArmId));
+        StartCoroutine(PushResetCommand(RightArmId));
     }
 
     // Use this for initialization
@@ -27,13 +29,13 @@ public class ResetController : MonoBehaviour, IInputClickHandler
 
     }
 
-    IEnumerator PushResetCommand()
+    IEnumerator PushResetCommand(int armId)
     {
         //byte[] myData = System.Text.Encoding.UTF8.GetBytes("This is some test data");
         // TODO: 
 
         var timestamp = DateTime.Now.Ticks;
-        var requestURL = string.Format("http://{0}/api/arm/{1}/go/0/0/0/{2}", ServiceEndPoint, ArmId, timestamp);
+        var requestURL = string.Format("http://{0}/api/arm/{1}/go/0/0/0/{2}", ServiceEndPoint, armId, timestamp);
         var www = UnityWebRequest.Put(requestURL, new byte[] { 0 });
         yield return www.Send();
 
