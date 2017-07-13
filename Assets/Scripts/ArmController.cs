@@ -1,4 +1,5 @@
 ﻿using HoloToolkit.Unity.InputModule;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 public class ArmController : MonoBehaviour, IManipulationHandler
 {
 
-    public string ServiceEndPoint;
+    public string ServiceEndPoint = "10.125.169.141:8182";
 
     public int ArmId = 4396;
 
@@ -94,28 +95,46 @@ public class ArmController : MonoBehaviour, IManipulationHandler
                 var deltaY = previousPosition.y - currentPosition.y;
                 var deltaZ = previousPosition.z - currentPosition.z;
 
-                Debug.LogFormat("Delta: {0} {1} {2}",
-                        deltaX,
-                        deltaY,
-                        deltaZ);
+                //Debug.LogFormat("Delta: {0} {1} {2}",
+                //        deltaX,
+                //        deltaY,
+                //        deltaZ);
 
-                //StartCoroutine(PushData(delta));
+                Debug.LogFormat("Current: {0} {1} {2}",
+                       currentPosition.x,
+                       currentPosition.y,
+                       currentPosition.z);
+
+                var fingerX = RegulateData((currentPosition.x*-1), -0.2, 0.2);
+                var fingerY = RegulateData(currentPosition.y, -0.15, 0.15);
+                var fingerZ = RegulateData(currentPosition.z, -0.2, 0.2);
+
+                var armX = Remap(fingerZ, -0.2, 0.2, 60, 180);
+                var armY = Remap(fingerX, -0.2, 0.2, -60, 60);
+                var armZ = Remap(fingerY, -0.15, 0.15, 0, 120);
+
+                Debug.LogFormat("Current Arm: {0} {1} {2}",
+                      armX,
+                      armY,
+                      armZ);
+
+                StartCoroutine(PushData(armX, armY, armZ));
 
                 // set Data
                 frameTrackingNumber = currentFrame;
                 previousPosition = currentPosition;
-
             }
         }
         frameTrackingNumber++;
     }
 
-    IEnumerator PushData(Vector3 delta)
+    IEnumerator PushData(double x, double y, double z)
     {
         //byte[] myData = System.Text.Encoding.UTF8.GetBytes("This is some test data");
         // TODO: 
-        var requestURL = string.Format("http://{0}/api/arm/{1}/delta/{2}/{3}/{4}", ServiceEndPoint, ArmId, delta.x, delta.y, delta.z);
-        UnityWebRequest www = UnityWebRequest.Put(requestURL, new byte[] { });
+        var timestamp = DateTime.Now.Ticks;
+        var requestURL = string.Format("http://{0}/api/arm/{1}/goco/{2}/{3}/{4}/{5}", ServiceEndPoint, ArmId, x, y, z, timestamp);
+        UnityWebRequest www = UnityWebRequest.Put(requestURL, new byte[] { 0 });
         yield return www.Send();
 
         if (www.isError)
@@ -126,5 +145,17 @@ public class ArmController : MonoBehaviour, IManipulationHandler
         {
             Debug.Log("Upload complete!");
         }
+    }
+
+
+    public double Remap(double value, double from1, double to1, double from2, double to2)
+    {
+        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+    }
+
+
+    public double RegulateData(double value, double min, double max)
+    {
+        return Math.Min(max, Math.Max(min, value));
     }
 }

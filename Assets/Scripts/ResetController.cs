@@ -6,14 +6,14 @@ using UnityEngine.Networking;
 
 public class ResetController : MonoBehaviour, IInputClickHandler
 {
-    public string ServiceEndPoint;
+    public string ServiceEndPoint = "10.125.169.141:8182";
 
     public int ArmId = 4396;
 
     public void OnInputClicked(InputClickedEventData eventData)
     {
         Debug.LogFormat("Reset arm position");
-        
+        StartCoroutine(PushResetCommand());
     }
 
     // Use this for initialization
@@ -24,6 +24,7 @@ public class ResetController : MonoBehaviour, IInputClickHandler
 	// Update is called once per frame
 	void Update () {
         transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
+
     }
 
     IEnumerator PushResetCommand()
@@ -33,7 +34,7 @@ public class ResetController : MonoBehaviour, IInputClickHandler
 
         var timestamp = DateTime.Now.Ticks;
         var requestURL = string.Format("http://{0}/api/arm/{1}/go/0/0/0/{2}", ServiceEndPoint, ArmId, timestamp);
-        var www = UnityWebRequest.Put(requestURL, new byte[] { });
+        var www = UnityWebRequest.Put(requestURL, new byte[] { 0 });
         yield return www.Send();
 
         if (www.isError)
