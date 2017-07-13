@@ -337,6 +337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4803676e8630c842acfb1dbc0cad1cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ServiceEndPoint: 10.104.21.21:8182
+  ArmId: 4396
 --- !u!1 &1144443789
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fdd93c1fa009d94190b634d7fc11638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ServiceEndPoint: 
+  ServiceEndPoint: 10.104.21.21:8182
   ArmId: 4396
   StatusOutPut: {fileID: 1842086925}
 --- !u!4 &1144443791
